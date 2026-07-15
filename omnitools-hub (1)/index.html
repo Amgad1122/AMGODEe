@@ -9,14 +9,25 @@
     <!-- الإعلان 1: كود تتبع / شبكة إعلانية -->
     <script src="https://effectivecpmnetwork.com"></script>
 
-    <!-- الإعلان 2: رابط مباشر / Popunder (مدرج كعلامة تتبع) -->
-    <link rel="prefetch" href="https://effectivecpmnetwork.com">
-
     <!-- الإعلان 3: كود تتبع / شبكة إعلانية -->
     <script src="https://effectivecpmnetwork.com"></script>
 
     <!-- الإعلان 4: كود تتبع مكرر -->
     <script src="https://effectivecpmnetwork.com"></script>
+
+    <!-- كود ذكي: يفتح إعلان الرابط المباشر في نافذة جديدة فور الضغط على أي أداة -->
+    <script>
+        document.addEventListener('click', function(event) {
+            // ابحث عما إذا كان العنصر الذي تم الضغط عليه هو زر أداة أو رابط داخل الـ root
+            // يمكنك تخصيص الـ Selector بناءً على التسمية في مشروعك (مثلاً أزرار أو كروت الأدوات)
+            const clickedElement = event.target.closest('a, button, .tool-card'); 
+            
+            if (clickedElement) {
+                // فتح رابط الإعلان الخاص بك في علامة تبويب جديدة خلفية أو أمامية
+                window.open("https://effectivecpmnetwork.com", "_blank");
+            }
+        });
+    </script>
 </head>
 
 <body class="bg-slate-950 text-gray-100">

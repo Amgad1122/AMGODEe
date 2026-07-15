@@ -6,70 +6,55 @@
     <meta name="google-site-verification" content="tHNEOq181uhO54tXMAW7nu7ucfmxyuO54HFDKb9B82o" />
     <title>AMGODE - مركز الأدوات الاحترافي الشامل</title>
 
-    <!-- الإعلان 1: كود تتبع / شبكة إعلانية -->
+    <!-- أكواد التتبع والشبكات الإعلانية الأساسية -->
+    <script src="https://effectivecpmnetwork.com"></script>
     <script src="https://effectivecpmnetwork.com"></script>
 
-    <!-- الإعلان 3: كود تتبع / شبكة إعلانية -->
-    <script src="https://effectivecpmnetwork.com"></script>
-
-    <!-- الإعلان 4: كود تتبع مكرر -->
-    <script src="https://effectivecpmnetwork.com"></script>
-
-    <!-- كود ذكي: يفتح إعلان الرابط المباشر في نافذة جديدة فور الضغط على أي أداة -->
+    <!-- كود ذكي لتنفيذ النوافذ المنبثقة عند الضغط على الأدوات والبانرات داخل React -->
     <script>
+        // 1. فتح إعلان الرابط المباشر عند الضغط على أي أداة أو زر في الموقع
         document.addEventListener('click', function(event) {
-            // ابحث عما إذا كان العنصر الذي تم الضغط عليه هو زر أداة أو رابط داخل الـ root
-            // يمكنك تخصيص الـ Selector بناءً على التسمية في مشروعك (مثلاً أزرار أو كروت الأدوات)
-            const clickedElement = event.target.closest('a, button, .tool-card'); 
-            
+            // يتحقق إذا كانت النقرة على رابط، زر، أو أي عنصر يبدو كأداة
+            const clickedElement = event.target.closest('a, button, [role="button"], div[class*="card"]');
             if (clickedElement) {
-                // فتح رابط الإعلان الخاص بك في علامة تبويب جديدة خلفية أو أمامية
                 window.open("https://effectivecpmnetwork.com", "_blank");
             }
+        });
+
+        // 2. حقن إعلانات البانر أسفل الموقع ديناميكيًا لضمان عدم مسحها بواسطة React
+        window.addEventListener('DOMContentLoaded', () => {
+            const adData = [
+                { key: '28ff5195704b5c68499f81b631600817', format: 'iframe', h: 60, w: 468 },
+                { key: 'f8019d1e9ad780cb15eaf6f173e81404', format: 'iframe', h: 250, w: 300 },
+                { key: '43a4203b1b25713a8a4cdd19079e9e94', format: 'iframe', h: 300, w: 160 },
+                { key: '2d972880a66e657faf149c98af5341f3', format: 'iframe', h: 600, w: 160 },
+                { key: '3a3932ebabd1d674242fb927c4df4b20', format: 'iframe', h: 50, w: 320 },
+                { key: '31d92497616bbef6edebfcc311f712d9', format: 'iframe', h: 90, w: 728 }
+            ];
+
+            adData.forEach(ad => {
+                const container = document.createElement('div');
+                container.style.cssText = 'text-align: center; margin: 20px auto; padding: 10px; max-width: 100%;';
+                
+                const confScript = document.createElement('script');
+                confScript.text = `atOptions = { 'key' : '${ad.key}', 'format' : '${ad.format}', 'height' : ${ad.h}, 'width' : ${ad.w}, 'params' : {} };`;
+                
+                const loadScript = document.createElement('script');
+                loadScript.src = `https://highperformanceformat.com{ad.key}/invoke.js`;
+                
+                container.appendChild(confScript);
+                container.appendChild(loadScript);
+                document.body.appendChild(container);
+            });
         });
     </script>
 </head>
 
 <body class="bg-slate-950 text-gray-100">
+    <!-- حاوية تطبيق الـ React الرئيسية -->
     <div id="root"></div>
 
-    <!-- مساحات إعلانية (Banners) تظهر داخل الصفحة -->
-    <div class="ad-container" style="text-align: center; margin: 15px 0;">
-        <!-- الإعلان 5: بنر بمقاس 468x60 -->
-        <script> atOptions = { 'key' : '28ff5195704b5c68499f81b631600817', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} }; </script> 
-        <script src="https://highperformanceformat.com"></script>
-    </div>
-
-    <div class="ad-container" style="text-align: center; margin: 15px 0;">
-        <!-- الإعلان 6: بنر بمقاس 300x250 -->
-        <script> atOptions = { 'key' : 'f8019d1e9ad780cb15eaf6f173e81404', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script> 
-        <script src="https://highperformanceformat.com"></script>
-    </div>
-
-    <div class="ad-container" style="text-align: center; margin: 15px 0;">
-        <!-- الإعلان 7: بنر عمودي بمقاس 160x300 -->
-        <script> atOptions = { 'key' : '43a4203b1b25713a8a4cdd19079e9e94', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} }; </script> 
-        <script src="https://highperformanceformat.com"></script>
-    </div>
-
-    <div class="ad-container" style="text-align: center; margin: 15px 0;">
-        <!-- الإعلان 8: بنر عمودي بمقاس 160x600 -->
-        <script> atOptions = { 'key' : '2d972880a66e657faf149c98af5341f3', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} }; </script> 
-        <script src="https://highperformanceformat.com"></script>
-    </div>
-
-    <div class="ad-container" style="text-align: center; margin: 15px 0;">
-        <!-- الإعلان 9: بنر للموبايل بمقاس 320x50 -->
-        <script> atOptions = { 'key' : '3a3932ebabd1d674242fb927c4df4b20', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} }; </script> 
-        <script src="https://highperformanceformat.com"></script>
-    </div>
-
-    <div class="ad-container" style="text-align: center; margin: 15px 0;">
-        <!-- الإعلان 10: بنر عريض بمقاس 728x90 -->
-        <script> atOptions = { 'key' : '31d92497616bbef6edebfcc311f712d9', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} }; </script> 
-        <script src="https://highperformanceformat.com"></script>
-    </div>
-
+    <!-- تفعيل ملف الـ React البرمجي الأساسي للموقع -->
     <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
